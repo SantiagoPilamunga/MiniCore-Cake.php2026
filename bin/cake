@@ -1,0 +1,15 @@
+<?php
+/**
+ * Script de ejecución de comandos de CakePHP en Consola
+ */
+declare(strict_types=1);
+
+use Cake\Console\CommandRunner;
+
+// Moverse a la raíz del proyecto MiniCore
+chdir(dirname(__DIR__));
+
+require 'vendor/autoload.php';
+
+$runner = new CommandRunner(new App\Application(dirname(__DIR__) . '/config'));
+exit($runner->run($argv));

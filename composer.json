@@ -1,0 +1,14 @@
+{
+    "name": "udla/mini-core-logistica",
+    "description": "Mini Core de Logística en CakePHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "Config\\": "config/"
+        }
+    },
+    "require": {
+        "cakephp/cakephp": "^5.0"
+    }
+}
