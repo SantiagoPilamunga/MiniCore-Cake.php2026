@@ -6,18 +6,18 @@ use PDOException;
 
 class Database {
     public static function conectar() {
-        // 1. Detectar si estamos en Clever Cloud buscando su variable de entorno nativa
-        $host_clever = getenv('MYSQL_ADDON_HOST');
+        // Render detectará estas variables configuradas a mano en su panel
+        $host_remoto = getenv('DB_HOST');
         
-        if ($host_clever) {
+        if ($host_remoto) {
             // ==========================================
-            // CONFIGURACIÓN PARA PRODUCCIÓN (CLEVER CLOUD)
+            // CONFIGURACIÓN PARA PRODUCCIÓN (CLEVER CLOUD MYSQL)
             // ==========================================
-            $host = $host_clever;
-            $port = getenv('MYSQL_ADDON_PORT');
-            $user = getenv('MYSQL_ADDON_USER');
-            $pass = getenv('MYSQL_ADDON_PASSWORD');
-            $db   = getenv('MYSQL_ADDON_DB');
+            $host = $host_remoto;
+            $port = getenv('DB_PORT');
+            $user = getenv('DB_USER');
+            $pass = getenv('DB_PASS');
+            $db   = getenv('DB_NAME');
         } else {
             // ==========================================
             // CONFIGURACIÓN PARA TU COMPUTADORA (LOCAL)
@@ -25,8 +25,8 @@ class Database {
             $host = '127.0.0.1';
             $port = '3306';               
             $user = 'root';               
-            $pass = '123456';             // Tu contraseña local de Workbench
-            $db   = 'minicore';           // Tu base de datos local
+            $pass = '123456';             // Tu clave local de Workbench
+            $db   = 'minicore';           // Tu base local
         }
         
         $charset = 'utf8mb4';
